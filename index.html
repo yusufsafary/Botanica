@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Botanica — Intelligent Discovery Engine</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Inter',sans-serif;
+  background:linear-gradient(135deg,#0b0f0c,#0f1f17);
+  color:#e8f5ec;
+  overflow-x:hidden;
+}
+.container{max-width:1100px;margin:auto;padding:20px}
+
+header{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px 0;
+}
+.logo{font-weight:800;font-size:20px;letter-spacing:1px}
+.lang-toggle{
+  cursor:pointer;
+  background:rgba(255,255,255,0.05);
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:12px;
+  backdrop-filter:blur(10px);
+}
+
+.hero{
+  text-align:center;
+  padding:100px 20px;
+}
+.hero h1{
+  font-size:42px;
+  font-weight:800;
+  margin-bottom:20px;
+}
+.hero p{
+  opacity:.7;
+  margin-bottom:30px;
+}
+
+.search-box{
+  max-width:600px;
+  margin:auto;
+  display:flex;
+  background:rgba(255,255,255,0.05);
+  border-radius:50px;
+  overflow:hidden;
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.08);
+}
+.search-box input{
+  flex:1;
+  padding:16px;
+  background:none;
+  border:none;
+  color:white;
+  font-size:14px;
+}
+.search-box button{
+  background:#2ecc71;
+  border:none;
+  padding:16px 22px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.suggestions{
+  margin-top:10px;
+  font-size:12px;
+  opacity:.6;
+}
+
+.result{
+  margin-top:30px;
+  background:rgba(255,255,255,0.05);
+  padding:20px;
+  border-radius:12px;
+  display:none;
+  border:1px solid rgba(255,255,255,0.08);
+  min-height:60px;
+}
+
+.section{margin-top:100px}
+.section h2{
+  font-size:28px;
+  margin-bottom:20px;
+}
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+.card{
+  background:rgba(255,255,255,0.05);
+  padding:20px;
+  border-radius:16px;
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.08);
+  transition:.3s;
+}
+.card:hover{
+  transform:translateY(-5px);
+}
+
+footer{
+  margin-top:120px;
+  text-align:center;
+  opacity:.6;
+  font-size:14px;
+  padding-bottom:40px;
+}
+
+/* typing cursor */
+.cursor{
+  display:inline-block;
+  width:8px;
+  background:#2ecc71;
+  margin-left:2px;
+  animation:blink 1s infinite;
+}
+@keyframes blink{
+  0%,100%{opacity:1}
+  50%{opacity:0}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+  <div class="logo">BOTANICA</div>
+  <div class="lang-toggle" onclick="toggleLang()">EN / 中文</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <h1 id="title">The Intelligent Discovery Engine for Plant-Based Living</h1>
+  <p id="subtitle">Find the right plant for your body, mind, and life.</p>
+
+  <div class="search-box">
+    <input id="searchInput" placeholder="sleep, stress, focus...">
+    <button onclick="searchPlant()">Search</button>
+  </div>
+
+  <div class="suggestions">
+    try: sleep · anxiety · focus · detox
+  </div>
+
+  <div id="result" class="result"></div>
+</section>
+
+<!-- FEATURES -->
+<section class="section">
+  <h2 id="featuresTitle">Core Features</h2>
+  <div class="features">
+    <div class="card">🔍 Smart Search Engine</div>
+    <div class="card">🧠 AI Botanical Advisor</div>
+    <div class="card">📊 Deep Plant Insights</div>
+    <div class="card">⚡ Instant Recommendations</div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="section">
+  <h2 id="howTitle">How It Works</h2>
+  <div class="features">
+    <div class="card" id="how1">Describe your need</div>
+    <div class="card" id="how2">AI finds the right plant</div>
+    <div class="card" id="how3">Apply in real life</div>
+  </div>
+</section>
+
+<footer id="footer">
+Botanica © 2026 — Intelligent Plant Discovery Platform
+</footer>
+
+</div>
+
+<script>
+let lang="en";
+
+function toggleLang(){
+  lang = lang==="en" ? "hk":"en";
+  updateLang();
+}
+
+function updateLang(){
+  if(lang==="hk"){
+    title.innerText="植物生活嘅智能探索引擎";
+    subtitle.innerText="為你搵到最適合嘅植物";
+    featuresTitle.innerText="核心功能";
+    howTitle.innerText="運作方式";
+    how1.innerText="輸入你嘅需要";
+    how2.innerText="AI 幫你配對植物";
+    how3.innerText="實際應用";
+    footer.innerText="Botanica © 2026 — 智能植物探索平台";
+  } else {
+    title.innerText="The Intelligent Discovery Engine for Plant-Based Living";
+    subtitle.innerText="Find the right plant for your body, mind, and life.";
+    featuresTitle.innerText="Core Features";
+    howTitle.innerText="How It Works";
+    how1.innerText="Describe your need";
+    how2.innerText="AI finds the right plant";
+    how3.innerText="Apply in real life";
+    footer.innerText="Botanica © 2026 — Intelligent Plant Discovery Platform";
+  }
+}
+
+function typeEffect(text, element){
+  element.innerHTML="";
+  let i=0;
+  let interval=setInterval(()=>{
+    element.innerHTML += text[i] || "";
+    i++;
+    if(i>text.length) clearInterval(interval);
+  },20);
+}
+
+function searchPlant(){
+  let input=document.getElementById("searchInput").value.toLowerCase();
+  let result=document.getElementById("result");
+
+  result.style.display="block";
+  result.innerHTML="Analyzing<span class='cursor'></span>";
+
+  setTimeout(()=>{
+    let responses={
+      sleep:"🌿 Chamomile<br><br>→ Improves sleep quality<br>→ Calms nervous system",
+      stress:"🌿 Ashwagandha<br><br>→ Reduces cortisol<br>→ Enhances resilience",
+      focus:"🌿 Ginkgo Biloba<br><br>→ Boosts memory<br>→ Improves concentration",
+      anxiety:"🌿 Lavender<br><br>→ Promotes calmness<br>→ Reduces anxiety"
+    };
+
+    let output = responses[input] || "🌱 Try: sleep, stress, focus, anxiety";
+
+    typeEffect(output,result);
+  },1200);
+}
+</script>
+
+</body>
+</html>
